@@ -359,11 +359,13 @@ class _Body_register extends State<Body_register> {
               labelStyle: TextStyle(fontSize: 12),
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 238, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -394,11 +396,13 @@ class _Body_register extends State<Body_register> {
               labelStyle: TextStyle(fontSize: 12),
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 238, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 238, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -421,11 +425,13 @@ class _Body_register extends State<Body_register> {
               labelStyle: TextStyle(fontSize: 12),
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -447,11 +453,13 @@ class _Body_register extends State<Body_register> {
               labelStyle: TextStyle(fontSize: 12),
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -470,7 +478,7 @@ class _Body_register extends State<Body_register> {
                   height: 50,
                   child: Center(child: Text("Create Account"))),
               onPressed: () {
-                if (_formKey.currentState.validate()) {
+                if (_formKey.currentState!.validate()) {
                   RegisterUser(context);
                 }
               },
@@ -622,7 +630,7 @@ class _Body_register extends State<Body_register> {
     );*/
   }
 
-  Widget _loginWithButton({String image, bool isActive = false}) {
+  /*Widget _loginWithButton({String image, bool isActive = false}) {
     return Container(
       width: 90,
       height: 70,
@@ -663,5 +671,5 @@ class _Body_register extends State<Body_register> {
         ),
       )),
     );
-  }
+  }*/
 }

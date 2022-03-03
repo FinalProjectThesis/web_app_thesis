@@ -13,31 +13,15 @@ import 'about_logged_in..dart';
 import 'contact_logged_in..dart';
 import 'help_logged_in..dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
-      title: 'WebApp',
-      home: UserDetails(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class UserDetails extends StatelessWidget {
   final String parent_username;
   final String token;
   final String student_id;
-  UserDetails({Key key, this.parent_username, this.token, this.student_id})
+  UserDetails(
+      {Key? key,
+      required this.parent_username,
+      required this.token,
+      required this.student_id})
       : super(key: key);
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +30,10 @@ class UserDetails extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width / 8),
         children: [
-          Menu(),
+          Menu(
+            parent_username: parent_username,
+            token: token,
+          ),
           _UserDetails(
             parent_username: parent_username,
             token: token,
@@ -58,7 +45,16 @@ class UserDetails extends StatelessWidget {
   }
 }
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
+  final String parent_username;
+  final String token;
+  Menu({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
+  @override
+  _Menu createState() => _Menu();
+}
+
+class _Menu extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -69,7 +65,7 @@ class Menu extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _menuItem(title: 'Home', isActive: true),
+              _menuItem1(context),
               _menuItem2(context),
               _menuItem3(context),
               _menuItem4(context),
@@ -85,39 +81,9 @@ class Menu extends StatelessWidget {
     );
   }
 
-  Widget _menuItem({String title = 'Title Menu', isActive = false}) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: Column(
-          children: [
-            Text(
-              '$title',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: isActive ? Colors.deepPurple : Colors.grey,
-              ),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            isActive
-                ? Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  )
-                : SizedBox()
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _menuItem2(BuildContext context) {
+  Widget _menuItem1(BuildContext context) {
+    String parent_username = widget.parent_username;
+    String token = widget.token;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
       child: ElevatedButton(
@@ -125,7 +91,29 @@ class Menu extends StatelessWidget {
           context;
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AboutPage()),
+            MaterialPageRoute(
+                builder: (context) =>
+                    AboutPage(parent_username: parent_username, token: token)),
+          );
+        },
+        child: Text('Home'),
+      ),
+    );
+  }
+
+  Widget _menuItem2(BuildContext context) {
+    String parent_username = widget.parent_username;
+    String token = widget.token;
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+      child: ElevatedButton(
+        onPressed: () {
+          context;
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    AboutPage(parent_username: parent_username, token: token)),
           );
         },
         child: Text('About Us'),
@@ -134,6 +122,8 @@ class Menu extends StatelessWidget {
   }
 
   Widget _menuItem3(BuildContext context) {
+    String parent_username = widget.parent_username;
+    String token = widget.token;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
       child: ElevatedButton(
@@ -141,7 +131,9 @@ class Menu extends StatelessWidget {
           context;
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ContactPage()),
+            MaterialPageRoute(
+                builder: (context) => ContactPage(
+                    parent_username: parent_username, token: token)),
           );
         },
         child: Text('Contact Us'),
@@ -150,6 +142,8 @@ class Menu extends StatelessWidget {
   }
 
   Widget _menuItem4(BuildContext context) {
+    String parent_username = widget.parent_username;
+    String token = widget.token;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
       child: ElevatedButton(
@@ -157,7 +151,9 @@ class Menu extends StatelessWidget {
           context;
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HelpPage()),
+            MaterialPageRoute(
+                builder: (context) =>
+                    HelpPage(parent_username: parent_username, token: token)),
           );
         },
         child: Text('Help'),
@@ -186,7 +182,11 @@ class _UserDetails extends StatefulWidget {
   final String parent_username;
   final String student_id;
   final String token;
-  _UserDetails({Key key, this.parent_username, this.student_id, this.token})
+  _UserDetails(
+      {Key? key,
+      required this.parent_username,
+      required this.student_id,
+      required this.token})
       : super(key: key);
   @override
   UserDetails1 createState() => UserDetails1();

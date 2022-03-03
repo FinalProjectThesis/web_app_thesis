@@ -16,26 +16,6 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:common_utilities/common_utilities.dart';
 import 'home_logged_in.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
-      title: 'WebApp',
-      home: ScoreList(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class ScoreList extends StatelessWidget {
   final String parent_username;
   final String token;
@@ -44,12 +24,12 @@ class ScoreList extends StatelessWidget {
   final String operation;
 
   ScoreList(
-      {Key key,
-      this.parent_username,
-      this.token,
-      this.student_id,
-      this.student_name,
-      this.operation})
+      {Key? key,
+      required this.parent_username,
+      required this.token,
+      required this.student_id,
+      required this.student_name,
+      required this.operation})
       : super(key: key);
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +58,8 @@ class ScoreList extends StatelessWidget {
 class Menu extends StatefulWidget {
   final String parent_username;
   final String token;
-  Menu({Key key, this.parent_username, this.token}) : super(key: key);
+  Menu({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
   @override
   _Menu createState() => _Menu();
 }
@@ -214,12 +195,12 @@ class _ScoreList extends StatefulWidget {
   final String operation;
   final String token;
   _ScoreList(
-      {Key key,
-      this.parent_username,
-      this.student_id,
-      this.student_name,
-      this.operation,
-      this.token})
+      {Key? key,
+      required this.parent_username,
+      required this.student_id,
+      required this.student_name,
+      required this.operation,
+      required this.token})
       : super(key: key);
   @override
   ScoreList1 createState() => ScoreList1();
@@ -523,9 +504,9 @@ class ScoreList1 extends State<_ScoreList> {
                       child: Text(items),
                     );
                   }).toList(),
-                  onChanged: (String chosenValue) {
+                  onChanged: (String? chosenValue) {
                     setState(() {
-                      dropdownvalue = chosenValue;
+                      dropdownvalue = chosenValue!;
                       postItems();
                     });
                   },

@@ -17,26 +17,6 @@ import 'package:common_utilities/common_utilities.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'home_logged_in.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
-      title: 'WebApp',
-      home: ScoreListDetails(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class ScoreListDetails extends StatelessWidget {
   final String parent_username;
   final String token;
@@ -48,15 +28,15 @@ class ScoreListDetails extends StatelessWidget {
   final String id;
 
   ScoreListDetails(
-      {Key key,
-      this.parent_username,
-      this.token,
-      this.student_id,
-      this.student_name,
-      this.operation,
-      this.index,
-      this.difficulty,
-      this.id})
+      {Key? key,
+      required this.parent_username,
+      required this.token,
+      required this.student_id,
+      required this.student_name,
+      required this.operation,
+      required this.index,
+      required this.difficulty,
+      required this.id})
       : super(key: key);
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +68,8 @@ class ScoreListDetails extends StatelessWidget {
 class Menu extends StatefulWidget {
   final String parent_username;
   final String token;
-  Menu({Key key, this.parent_username, this.token}) : super(key: key);
+  Menu({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
   @override
   _Menu createState() => _Menu();
 }
@@ -227,15 +208,15 @@ class _ScoreListDetails extends StatefulWidget {
   final String difficulty;
   final String token;
   _ScoreListDetails(
-      {Key key,
-      this.parent_username,
-      this.student_id,
-      this.student_name,
-      this.operation,
-      this.id,
-      this.index,
-      this.difficulty,
-      this.token})
+      {Key? key,
+      required this.parent_username,
+      required this.student_id,
+      required this.student_name,
+      required this.operation,
+      required this.id,
+      required this.index,
+      required this.difficulty,
+      required this.token})
       : super(key: key);
   @override
   ScoreListDetails1 createState() => ScoreListDetails1();

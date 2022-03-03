@@ -14,30 +14,11 @@ import 'about_logged_in..dart';
 import 'contact_logged_in..dart';
 import 'help_logged_in..dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
-      title: 'WebApp',
-      home: HomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class HomePage extends StatelessWidget {
   final String parent_username;
   final String token;
-  HomePage({Key key, this.parent_username, this.token}) : super(key: key);
+  HomePage({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +41,8 @@ class HomePage extends StatelessWidget {
 class Menu extends StatefulWidget {
   final String parent_username;
   final String token;
-  Menu({Key key, this.parent_username, this.token}) : super(key: key);
+  Menu({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
   @override
   _Menu createState() => _Menu();
 }
@@ -206,7 +188,8 @@ class _Menu extends State<Menu> {
 class ChildrenList extends StatefulWidget {
   final String parent_username;
   final String token;
-  ChildrenList({Key key, this.parent_username, this.token}) : super(key: key);
+  ChildrenList({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
   @override
   _ChildrenList createState() => _ChildrenList();
 }

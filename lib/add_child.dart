@@ -16,7 +16,8 @@ class ChildSetup extends StatelessWidget {
   final String parent_username;
   final String token;
   _ChildSetup createState() => _ChildSetup();
-  ChildSetup({Key key, this.parent_username, this.token}) : super(key: key);
+  ChildSetup({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFf5f5f5),
@@ -41,7 +42,8 @@ class ChildSetup extends StatelessWidget {
 class Menu extends StatefulWidget {
   final String parent_username;
   final String token;
-  Menu({Key key, this.parent_username, this.token}) : super(key: key);
+  Menu({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
   @override
   _Menu createState() => _Menu();
 }
@@ -188,7 +190,8 @@ class AddChildSetup extends StatefulWidget {
   final String parent_username;
   final String token;
 
-  AddChildSetup({Key key, this.parent_username, this.token}) : super(key: key);
+  AddChildSetup({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
 
   @override
   _ChildSetup createState() => _ChildSetup();
@@ -336,11 +339,13 @@ class _ChildSetup extends State<AddChildSetup> {
               labelStyle: TextStyle(fontSize: 12),
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -363,11 +368,13 @@ class _ChildSetup extends State<AddChildSetup> {
               labelStyle: TextStyle(fontSize: 12),
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 240, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 240, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -386,7 +393,7 @@ class _ChildSetup extends State<AddChildSetup> {
                   height: 50,
                   child: Center(child: Text("Add Child"))),
               onPressed: () {
-                if (_formKey.currentState.validate()) {
+                if (_formKey.currentState!.validate()) {
                   AddChild(context);
                 }
               },
@@ -429,7 +436,7 @@ class _ChildSetup extends State<AddChildSetup> {
     );
   }
 
-  Widget _loginWithButton({String image, bool isActive = false}) {
+  /*Widget _loginWithButton({String image, bool isActive = false}) {
     return Container(
       width: 90,
       height: 70,
@@ -470,5 +477,5 @@ class _ChildSetup extends State<AddChildSetup> {
         ),
       )),
     );
-  }
+  }*/
 }

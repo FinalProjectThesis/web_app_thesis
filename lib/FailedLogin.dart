@@ -330,11 +330,11 @@ class _Body extends State<Body> {
             labelStyle: TextStyle(fontSize: 12),
             contentPadding: EdgeInsets.only(left: 30),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50]),
+              borderSide: BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
               borderRadius: BorderRadius.circular(15),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50]),
+              borderSide: BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
               borderRadius: BorderRadius.circular(15),
             ),
           ),
@@ -360,11 +360,11 @@ class _Body extends State<Body> {
             labelStyle: TextStyle(fontSize: 12),
             contentPadding: EdgeInsets.only(left: 30),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50]),
+              borderSide: BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
               borderRadius: BorderRadius.circular(15),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50]),
+              borderSide: BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
               borderRadius: BorderRadius.circular(15),
             ),
           ),
@@ -377,7 +377,7 @@ class _Body extends State<Body> {
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.deepPurple[100],
+                color: Color.fromARGB(255, 210, 196, 233),
                 spreadRadius: 10,
                 blurRadius: 20,
               ),
@@ -420,7 +420,7 @@ class _Body extends State<Body> {
     );
   }
 
-  Widget _loginWithButton({String image, bool isActive = false}) {
+  /*Widget _loginWithButton({String image, bool isActive = false}) {
     return Container(
       width: 90,
       height: 70,
@@ -461,5 +461,5 @@ class _Body extends State<Body> {
         ),
       )),
     );
-  }
+  }*/
 }

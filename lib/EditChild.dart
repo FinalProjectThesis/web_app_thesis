@@ -19,12 +19,12 @@ class EditChild extends StatelessWidget {
   final String student_age;
   final String student_name;
   EditChild(
-      {Key key,
-      this.parent_username,
-      this.token,
-      this.student_id,
-      this.student_age,
-      this.student_name})
+      {Key? key,
+      required this.parent_username,
+      required this.token,
+      required this.student_id,
+      required this.student_age,
+      required this.student_name})
       : super(key: key);
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +40,7 @@ class EditChild extends StatelessWidget {
             student_id: student_id,
             student_name: student_name,
             token: token,
+            key: null,
           ),
         ],
       ),
@@ -50,7 +51,8 @@ class EditChild extends StatelessWidget {
 class Menu extends StatefulWidget {
   final String parent_username;
   final String token;
-  Menu({Key key, this.parent_username, this.token}) : super(key: key);
+  Menu({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
   @override
   _Menu createState() => _Menu();
 }
@@ -186,12 +188,12 @@ class _EditChild extends StatefulWidget {
   final String student_id;
   final String token;
   _EditChild({
-    Key key,
-    this.student_id,
-    this.parent_username,
-    this.student_name,
-    this.student_age,
-    this.token,
+    required Key? key,
+    required this.student_id,
+    required this.parent_username,
+    required this.student_name,
+    required this.student_age,
+    required this.token,
   }) : super(key: key);
   @override
   EditChild1 createState() => EditChild1();
@@ -201,9 +203,17 @@ class EditChild1 extends State<_EditChild> {
   final _formKey = GlobalKey<FormState>();
   //late TextEditingController _childnameController, _childageController;
   // ignore: non_constant_identifier_names
-  final _childnameController = TextEditingController();
-  // ignore: non_constant_identifier_names
-  final _childageController = TextEditingController();
+  late TextEditingController _childnameController;
+  late TextEditingController _childageController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    final _childnameController =
+        TextEditingController(text: widget.student_name);
+    // ignore: non_constant_identifier_names
+    final _childageController = TextEditingController(text: widget.student_age);
+  }
 
   EditChild(BuildContext context) async {
     String studentname = _childnameController.text;
@@ -395,11 +405,13 @@ class EditChild1 extends State<_EditChild> {
               labelStyle: TextStyle(fontSize: 12),
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 238, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 238, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -422,11 +434,13 @@ class EditChild1 extends State<_EditChild> {
               labelStyle: TextStyle(fontSize: 12),
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blueGrey[50]),
+                borderSide:
+                    BorderSide(color: Color.fromARGB(255, 236, 240, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -445,7 +459,7 @@ class EditChild1 extends State<_EditChild> {
                   height: 50,
                   child: Center(child: Text("Update Child"))),
               onPressed: () {
-                if (_formKey.currentState.validate()) {
+                if (_formKey.currentState!.validate()) {
                   EditChild(context);
                 }
               },

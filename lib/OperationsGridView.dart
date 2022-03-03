@@ -15,26 +15,6 @@ import 'contact_logged_in..dart';
 import 'help_logged_in..dart';
 import 'home_logged_in.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
-      title: 'WebApp',
-      home: OperationsGridView(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class OperationsGridView extends StatelessWidget {
   final String parent_username;
   final String token;
@@ -42,12 +22,12 @@ class OperationsGridView extends StatelessWidget {
   final String student_name;
   final String student_age;
   OperationsGridView(
-      {Key key,
-      this.parent_username,
-      this.token,
-      this.student_id,
-      this.student_name,
-      this.student_age})
+      {Key? key,
+      required this.parent_username,
+      required this.token,
+      required this.student_id,
+      required this.student_name,
+      required this.student_age})
       : super(key: key);
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +56,8 @@ class OperationsGridView extends StatelessWidget {
 class Menu extends StatefulWidget {
   final String parent_username;
   final String token;
-  Menu({Key key, this.parent_username, this.token}) : super(key: key);
+  Menu({Key? key, required this.parent_username, required this.token})
+      : super(key: key);
   @override
   _Menu createState() => _Menu();
 }
@@ -212,12 +193,12 @@ class _OperationsGridView extends StatefulWidget {
   final String student_age;
   final String token;
   _OperationsGridView(
-      {Key key,
-      this.parent_username,
-      this.student_id,
-      this.student_name,
-      this.student_age,
-      this.token})
+      {Key? key,
+      required this.parent_username,
+      required this.student_id,
+      required this.student_name,
+      required this.student_age,
+      required this.token})
       : super(key: key);
   @override
   OperationsGridView1 createState() => OperationsGridView1();
@@ -228,19 +209,14 @@ class OperationsGridView1 extends State<_OperationsGridView> {
   void initState() {
     // TODO: implement initState
   }
-
-  @override
-  Widget space(BuildContext) {
-    Container(
-      height: 300,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Container(
+          height: 300,
+        ),
         Text(
           'Please Select an \nOperation to View',
           style: TextStyle(

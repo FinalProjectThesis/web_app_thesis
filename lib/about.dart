@@ -233,12 +233,9 @@ class Body extends StatelessWidget {
               vertical: MediaQuery.of(context).size.height / 6),
           child: Container(
             width: 320,
-            child: _formLogin(),
           ),
         )
       ],
     );
   }
-
-  Widget _formLogin() {}
 }
