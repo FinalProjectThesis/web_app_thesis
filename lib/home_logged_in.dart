@@ -261,6 +261,10 @@ class _ChildrenList extends State<ChildrenList> {
       Container(
         height: 500,
         width: 1000,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/chalkboard.png"),
+                fit: BoxFit.cover)),
         padding: const EdgeInsets.all(25),
         child: new Column(mainAxisSize: MainAxisSize.min, children: [
           _items.length > 0

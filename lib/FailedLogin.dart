@@ -202,7 +202,7 @@ class _Body extends State<Body> {
     String username = _usernameController.text;
     String userpassword = _passwordController.text;
     String login = 'uslsthesisapi.herokuapp.com';
-    final postresponse = await post(Uri.http(login, '/login'), headers: {
+    final postresponse = await post(Uri.https(login, '/login'), headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "POST, GET, PUT, DELETE",
     }, body: {

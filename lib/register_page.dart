@@ -214,7 +214,7 @@ class _Body_register extends State<Body_register> {
     String userfirstname = _firstnameController.text;
     String userlastname = _lastnameController.text;
     final postresponse = await http
-        .post(Uri.http('uslsthesisapi.herokuapp.com', '/register'), body: {
+        .post(Uri.https('uslsthesisapi.herokuapp.com', '/register'), body: {
       'username': username,
       'password': userpassword,
       'first_name': userfirstname,

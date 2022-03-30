@@ -40,7 +40,6 @@ class EditChild extends StatelessWidget {
             student_id: student_id,
             student_name: student_name,
             token: token,
-            key: null,
           ),
         ],
       ),
@@ -188,7 +187,7 @@ class _EditChild extends StatefulWidget {
   final String student_id;
   final String token;
   _EditChild({
-    required Key? key,
+    Key? key,
     required this.student_id,
     required this.parent_username,
     required this.student_name,
@@ -203,83 +202,79 @@ class EditChild1 extends State<_EditChild> {
   final _formKey = GlobalKey<FormState>();
   //late TextEditingController _childnameController, _childageController;
   // ignore: non_constant_identifier_names
-  late TextEditingController _childnameController;
-  late TextEditingController _childageController;
+  late TextEditingController _childnameController, _childageController;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    final _childnameController =
-        TextEditingController(text: widget.student_name);
-    // ignore: non_constant_identifier_names
-    final _childageController = TextEditingController(text: widget.student_age);
+    _childnameController = TextEditingController(text: widget.student_name);
+    _childageController = TextEditingController(text: widget.student_age);
   }
 
   EditChild(BuildContext context) async {
     String studentname = _childnameController.text;
     String studentage = _childageController.text;
-    if (studentname == widget.student_name) {
+    var postresponse = await put(
+        Uri.https('uslsthesisapi.herokuapp.com',
+            '/childedit/update/' + widget.student_id),
+        body: {
+          "student_name": studentname,
+          "student_age": studentage,
+        },
+        headers: {
+          "token": widget.token,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, GET, PUT, DELETE",
+        });
+    if (postresponse.statusCode == 200) {
+      print("testsuccess");
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => HomePage(
+            parent_username: widget.parent_username,
+            token: widget.token,
+          ),
+        ),
+        (route) => false,
+      );
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         backgroundColor: Colors.deepOrange,
         content: Container(
           height: 15,
           child: Row(
             children: [
-              Text("Please Enter a different name"),
+              Text('Student ' + widget.student_name + ' Modified'),
+            ],
+          ),
+        ),
+      ));
+    } else if (studentage == 0) {
+      print(postresponse.body);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Colors.deepOrange,
+        content: Container(
+          height: 15,
+          child: Row(
+            children: [
+              Text("Error in Modifying child"),
             ],
           ),
         ),
       ));
     } else {
-      var postresponse = await put(
-          Uri.https('uslsthesisapi.herokuapp.com',
-              '/childedit/update/' + widget.student_id),
-          body: {
-            "student_name": studentname,
-            "student_age": studentage,
-          },
-          headers: {
-            "token": widget.token,
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, GET, PUT, DELETE",
-          });
-      if (postresponse.statusCode == 200) {
-        print("testsuccess");
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => HomePage(
-              parent_username: widget.parent_username,
-              token: widget.token,
-            ),
+      print(postresponse.body);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Colors.deepOrange,
+        content: Container(
+          height: 15,
+          child: Row(
+            children: [
+              Text("Error in Modifying child"),
+            ],
           ),
-          (route) => false,
-        );
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Colors.deepOrange,
-          content: Container(
-            height: 15,
-            child: Row(
-              children: [
-                Text('Student ' + widget.student_name + ' Modified'),
-              ],
-            ),
-          ),
-        ));
-      } else {
-        print(postresponse.body);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          backgroundColor: Colors.deepOrange,
-          content: Container(
-            height: 15,
-            child: Row(
-              children: [
-                Text("Error in Modifying child"),
-              ],
-            ),
-          ),
-        ));
-      }
+        ),
+      ));
     }
   }
 
@@ -406,12 +401,12 @@ class EditChild1 extends State<_EditChild> {
               contentPadding: EdgeInsets.only(left: 30),
               enabledBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: Color.fromARGB(255, 236, 238, 241)),
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: Color.fromARGB(255, 236, 238, 241)),
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -440,7 +435,7 @@ class EditChild1 extends State<_EditChild> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: Color.fromARGB(255, 236, 240, 241)),
+                    BorderSide(color: Color.fromARGB(255, 236, 239, 241)),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
