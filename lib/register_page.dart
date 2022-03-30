@@ -53,29 +53,34 @@ class _RegisterPage extends State<RegisterPage> {
 class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+    return Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/TASK_BAR.png"),
+                fit: BoxFit.cover)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _menuItem1(context),
-              _menuItem2(context),
-              _menuItem3(context),
-              _menuItem4(context),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _menuItem1(context),
+                  _menuItem2(context),
+                  _menuItem3(context),
+                  _menuItem4(context),
+                ],
+              ),
+              Row(
+                children: [
+                  _login_page(context),
+                  _menuItem(title: 'Create Account', isActive: true)
+                ],
+              ),
             ],
           ),
-          Row(
-            children: [
-              _login_page(context),
-              _menuItem(title: 'Create Account', isActive: true)
-            ],
-          ),
-        ],
-      ),
-    );
+        ));
   }
 
   Widget _menuItem({String title = 'Title Menu', isActive = false}) {
